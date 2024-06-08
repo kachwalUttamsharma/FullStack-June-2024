@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <!-- form - wrapper -->
+    <!-- label, input element -->
+    <!-- label (for) -- link -- input element using (id,name) -->
+    <!-- name attr (left side key ), right side (value) -> 
+    {
+        name: xxx
+        password: xxx
+        sex: xxx
+        country: india
+        dateOfBirth: xxx
+        messgae: xxx
+        subcribe : yes
+    }
+    -->
+    <form>
+      <!-- Text Element -->
+      <label for="name">Name :</label>
+      <input type="text" id="name" />
+      <br />
+      <br />
+      <!-- password -->
+      <label for="password">Password :</label>
+      <input type="password" id="password" />
+      <br />
+      <br />
+      <!-- Radio Button -->
+      <!-- {
+        sex: male | female
+      } -->
+      <label for="sex">Sex</label>
+      <input type="radio" id="male" name="sex" value="male" />
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="sex" value="female" />
+      <label for="female">Female</label>
+      <br />
+      <br />
+
+      <!-- dropdown -->
+      <!-- {
+        countrySelected: India
+       } -->
+      <label for="country">Country : </label>
+      <select id="country" name="countrySelected">
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="Austrila">Austrila</option>
+        <option value="England">England</option>
+        <option value="Canada">Canada</option>
+      </select>
+
+      <br />
+      <br />
+
+      <label for="date">Date of Birth</label>
+      <input type="date" id="date" name="dateOfBirth" />
+      <br />
+      <br />
+
+      <label for="message"> Message: </label>
+      <br />
+      <textarea id="message" rows="5" cols="15"></textarea>
+
+      <br />
+      <input type="checkbox" id="Subscribe" />
+      <label for="Subscribe">Subscribe to the news letter ?</label>
+      <br />
+      <br />
+      <!-- Figure out the difference between 2 -->
+      <button>Submit Button</button>
+      <button type="button">Reset</button>
+      <input type="submit" value="Submit Button" />
+    </form>
+  </body>
+</html>

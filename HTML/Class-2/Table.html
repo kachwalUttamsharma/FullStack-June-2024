@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+  </head>
+  <body>
+    <!-- table - is a wrapper -->
+    <!-- thead, tbody, tfoot - semantic tags -->
+    <!-- tr - table row -->
+    <!-- th - table heading -->
+    <!-- td - table data -->
+    <!-- rowspan - value which defines amount of rows it need to cover 
+        or spread across -->
+    <!-- Colspan ->  value which defines amount of columns it need to cover 
+        or spread across -->
+    <table border="1" style="border-collapse: collapse">
+      <caption>
+        Tracking of Subject to PSP
+      </caption>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>PSP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">1</td>
+          <td rowspan="2">Sheela</td>
+          <td>DSA</td>
+          <td>80%</td>
+        </tr>
+        <tr>
+          <td>SQL</td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td rowspan="2">2</td>
+          <td rowspan="2">Sudhesh</td>
+          <td>DSA</td>
+          <td>100%</td>
+        </tr>
+        <tr>
+          <td>SQL</td>
+          <td>90%</td>
+        </tr>
+        <tr>
+          <td rowspan="2">3</td>
+          <td rowspan="2">Suryanarayana</td>
+          <td>DSA</td>
+          <td>96%</td>
+        </tr>
+        <tr>
+          <td>SQL</td>
+          <td>100%</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total Average PSP</td>
+          <td>94.33%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
