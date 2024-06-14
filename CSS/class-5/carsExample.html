@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars FlexBox Example</title>
+    <style>
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        border: 1px solid #ccc;
+        margin: 20px;
+        box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+        /* (min-width to up space available and width when is reduced then it start shrinking) */
+        flex-basis: 200px;
+      }
+
+      .card img {
+        max-width: 100%;
+        min-height: 60%;
+        max-height: 80%;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .card img {
+          max-width: 100%;
+          min-height: 44%;
+          max-height: 80%;
+        }
+      }
+      .card .text > button {
+        background-color: gray;
+        border-radius: 8px;
+        color: whitesmoke;
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+      }
+      .card .text {
+        padding: 0 20px 20px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="cards">
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhcnN8ZW58MHx8MHx8fDA%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcnN8ZW58MHx8MHx8fDA%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnN8ZW58MHx8MHx8fDA%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9yc2NoZXxlbnwwfHwwfHx8MA%3D%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1541348263662-e068662d82af?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXVkaXxlbnwwfHwwfHx8MA%3D%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1637246112842-afaeda37525a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvbmRhJTIwY2l2aWN8ZW58MHx8MHx8fDA%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1459603677915-a62079ffd002?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1iYXNzYWRvciUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+      <article class="card">
+        <img
+          src="https://images.unsplash.com/photo-1559385072-5adb2c4fc83f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFtYm9yZ2hpbmklMjB1cnVzfGVufDB8fDB8fHww"
+          alt="sample Photo"
+        />
+        <div class="text">
+          <h3>Cars Model</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet,
+            illo?
+          </p>
+          <button>Click to Select</button>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

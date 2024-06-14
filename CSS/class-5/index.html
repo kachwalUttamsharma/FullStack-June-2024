@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexible Box</title>
+    <style>
+      .container {
+        background-color: teal;
+        width: auto;
+        height: 500px;
+        border: 2px solid black;
+        padding: 5px;
+        display: flex;
+        /* default value : row */
+        /* columns, row-reverse, column-reverse */
+        /* flex-direction decides main axis */
+        /* it defines flex-item direction
+        which is directly proportional 
+        to main-axis */
+        flex-direction: row;
+        /*this property is applied to main-axis
+        to move elements */
+        justify-content: center;
+        /*this property is applied to cross-axis
+        to move elements */
+        align-items: center;
+        /* it helps to wrap elements as
+        per width available 
+        (reference screen width)*/
+        /* flex-wrap: wrap; */
+
+        /*flex-flow: flex-direction flex-wrap */
+        /* flex-flow: row wrap; */
+
+        /* The gap CSS property is a shorthand 
+        property for row-gap and column-gap 
+        specifying the gutters between grid rows
+         and columns. */
+        /* gap: 5px; */
+        /* row-gap: 5px;
+        column-gap: 25px; */
+      }
+
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: tomato;
+        margin: 5px;
+      }
+
+      .box1 {
+        /* default value of order is 0 */
+        /* order is helpful in order re-arrange the order in 
+      which elements are rendered*/
+        order: 2;
+        /* flex grow is used when we want items to grow with ratio
+      when width of screen increases*/
+        /* flex-grow: 2; */
+      }
+
+      .box2 {
+        order: 2;
+        /* flex shrink is used when we want items to shrink
+      when width of screen decreases*/
+        /* flex-shrink: 4; */
+      }
+
+      .box3 {
+        order: 2;
+      }
+
+      .box4 {
+        order: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Wrapper -->
+    <div class="container">
+      <!-- items -->
+      <div class="box box1">1</div>
+      <div class="box box2">2</div>
+      <div class="box box3">3</div>
+      <div class="box box4">4</div>
+    </div>
+  </body>
+</html>
