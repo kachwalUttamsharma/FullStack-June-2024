@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 20% 1fr 70px;
+        grid-template-rows: 80px 1fr 15%;
+        grid-template-areas:
+          "head head head"
+          "nav content ads"
+          "nav footer footer";
+        gap: 10px;
+      }
+
+      header,
+      article,
+      nav,
+      aside,
+      footer {
+        padding: 8px;
+        background-color: teal;
+      }
+
+      .pageHeader {
+        grid-area: head;
+      }
+
+      .mainArticle {
+        grid-area: content;
+      }
+
+      .mainNav {
+        grid-area: nav;
+      }
+
+      .siteAds {
+        grid-area: ads;
+      }
+
+      .pageFooter {
+        grid-area: footer;
+      }
+
+      @media only screen and (max-width: 425px) {
+        body {
+          grid-template-columns: 1fr;
+          grid-template-rows: 80px 1fr 70px 1fr 70px;
+          grid-template-areas:
+            "head"
+            "content"
+            "ads"
+            "nav"
+            "footer";
+          gap: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="pageHeader">Header</header>
+    <article class="mainArticle">Content Area</article>
+    <nav class="mainNav">Nav / sidebar</nav>
+    <aside class="siteAds">Ads</aside>
+    <footer class="pageFooter">Footer</footer>
+  </body>
+</html>

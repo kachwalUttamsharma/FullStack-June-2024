@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        /* box-sizing: border-box; */
+      }
+
+      body {
+        background-color: rgb(230, 125, 106);
+        color: rgb(10, 96, 182);
+        font-size: 20px;
+        line-height: 1.5;
+      }
+
+      .container {
+        width: 520px;
+        height: 550px;
+        border: 2px solid black;
+        padding: 10px;
+        /* top-bottom right-left */
+        margin: 100px auto;
+        display: grid;
+        /* width of 1fr = width/total no of Fr */
+        /* 400px/4 => 100px */
+        /* 500px/4 => 125px 250px 125px */
+        /* repeat (no of columns, width of each columns) */
+        /* minmax() */
+        /* grid-template-columns: repeat(auto-fit, minmax(80px, 100px)); */
+        grid-template-rows: 100px 100px 100px 100px;
+        grid-template-columns: 100px 100px 100px 100px 100px;
+
+        /*justify-items: along the row you can adjust it
+         using start, end, center*/
+        /* justify-items: center; */
+        /*aling-items: along the column you can adjust it
+         using start, end, center*/
+        /* justify-items: center;
+        align-items: center; */
+        /* place-items: center; */
+
+        /* justify-content: end;
+        align-content: end; */
+        /* place-content: center; */
+
+        grid-auto-flow: row;
+
+        /* column-gap: 5px;
+        row-gap: 5px; */
+        gap: 5px;
+      }
+
+      .item {
+        background-color: dodgerblue;
+        color: whitesmoke;
+        border: 1px solid lightblue;
+        padding: 8px;
+      }
+
+      .item-1 {
+        /* justify-self: center;
+        align-self: center; */
+        place-self: center;
+        /* start line / end line */
+        grid-column: 1 / span 3;
+        grid-row: 1 / span 2;
+      }
+
+      .item-10 {
+        grid-column: 2 / 5;
+      }
+
+      .item-2 {
+        justify-self: center;
+        align-self: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item-1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem qui
+        illo eveniet optio, rerum rem molestias deleniti laudantium quae
+        perspiciatis eligendi fugiat hic!
+      </div>
+      <div class="item item-2">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item item-10">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, eaque?
+      </div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+      <div class="item">15</div>
+      <div class="item">16</div>
+      <div class="item">17</div>
+      <div class="item">18</div>
+    </div>
+  </body>
+</html>
