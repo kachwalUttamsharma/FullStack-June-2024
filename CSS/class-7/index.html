@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Page</title>
+    <!-- Priority : inline > internal/external (depending on order ) -->
+    <!-- !important -> is used to override exisinting css and to apply specific property -->
+    <link href="./style.css" rel="stylesheet" />
+    <style>
+      h1 {
+        color: red;
+      }
+
+      #h1tag {
+        color: blueviolet;
+      }
+
+      h1 {
+        color: gray;
+      }
+
+      /* 100 > 010 > 001 */
+      #h1tag {
+        color: rgb(174, 174, 26);
+      }
+
+      /* 001 */
+      h1 {
+        color: brown;
+      }
+
+      /* 010 */
+      .secondH1 {
+        color: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: green">This is a Heading</h1>
+    <br />
+    <h1 class="secondH1" id="h1tag">This is a Heading</h1>
+    <p>This is a paragraph of text.</p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <a href="#">This is a link</a>
+  </body>
+</html>

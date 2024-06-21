@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .childContainer {
+        position: relative;
+      }
+      #para2 {
+        position: absolute;
+        top: 3px;
+
+        /* relative vs absolute */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p id="para1">Lorem, ipsum dolor.</p>
+      <br />
+      <div class="childContainer">
+        <p>Paragraph 1</p>
+        <p id="para2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo eos
+          nisi quidem laboriosam corrupti doloribus aperiam aspernatur officia
+          quos.
+        </p>
+        <p>Paragraph 2</p>
+        <p>Paragraph 3</p>
+        <p>Paragraph 4</p>
+      </div>
+      <br />
+      <p id="para3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo eos
+        nisi quidem laboriosam corrupti doloribus aperiam aspernatur officia
+        quos.
+      </p>
+    </div>
+  </body>
+</html>
