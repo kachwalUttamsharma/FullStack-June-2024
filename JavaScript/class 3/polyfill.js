@@ -50,13 +50,24 @@ cap.petersTeam.myApply(ironman, ["natasha", "war machine"]);
 
 Function.prototype.myBind = function (objOnWhichReqFnToBeInvoked, ...params) {
   const requiredFunc = this; // petersTeam
-  // returs a function
-  return function (...params) {
+  // returs a function with no parameters
+  return function () {
     requiredFunc.myCall(objOnWhichReqFnToBeInvoked, ...params);
   };
 };
 
-cap.petersTeam.myBind(ironman, "natasha", "war machine")();
+cap.petersTeam.myBind(ironman, "natasha", "war machine")(); // calling the returned function with no parameters
+
+// Also we are storing this into requiredFunc because in line 54, inside that function if we use this, then that this 
+// refers to window/global, instead we can use arrow function as this refers to parent object
+
+Function.prototype.myBind2 = function (objOnWhichReqFnToBeInvoked, ...params) {
+  return () => {
+    this.myCall(objOnWhichReqFnToBeInvoked, ...params);
+  }
+}
 
 const abc = cap.petersTeam.myBind(ironman, "natasha", "war machine");
-console.log(abc);
+// console.log(abc);
+
+cap.petersTeam.myBind2(ironman, "natasha", "war machine")();  // Arrow function is used in this bind.
