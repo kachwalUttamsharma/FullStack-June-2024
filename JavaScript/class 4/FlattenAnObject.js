@@ -15,17 +15,29 @@ const input = {
 };
 
 // to
+function flattenObject(obj, parent = "", res = {}) {
+  for (let key in obj) {
+    let propName = parent ? parent + "." + key : key;
+    if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+      flattenObject(obj[key], propName, res);
+    } else {
+      res[propName] = obj[key];
+    }
+  }
+  return res;
+}
 
-const output = {
-  firstName: "John",
-  lastName: "Doe",
-  "address.street": "North 1st street",
-  "address.city": "San Jose",
-  "address.state": "CA",
-  "address.country": "USA",
-  "address.postCodes.firstBlock": 10,
-  "address.postCodes.secondBlock": 12,
-};
+// const output = {
+// 	firstName: "John",
+// 	lastName: "Doe",
+// 	"address.street": "North 1st street",
+// 	"address.city": "San Jose",
+// 	"address.state": "CA",
+// 	"address.country": "USA",
+// 	"address.postCodes.firstBlock": 10,
+// 	"address.postCodes.secondBlock": 12,
+//   birthDate: "1987-07-16"
+// };
 
 // Initalize with default parameters cause we need parent prop to append the child prop
 Object.prototype.myFlat = function(parentProp = '', res = {}) { 
@@ -48,7 +60,6 @@ Object.prototype.myFlat = function(parentProp = '', res = {}) {
 	return res;
 }
 
-const output1 = input.myFlat();
-console.log(input, "\n", output1);
-
+const output = input.myFlat();
+console.log(input, "\n", output);
 console.log(flattenObject(input));
