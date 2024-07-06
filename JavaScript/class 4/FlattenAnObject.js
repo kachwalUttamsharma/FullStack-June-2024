@@ -62,5 +62,4 @@ Object.prototype.myFlat = function(parentProp = '', res = {}) {
 
 const output = input.myFlat();
 console.log(input, "\n", output);
-=======
 console.log(flattenObject(input));
