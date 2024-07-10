@@ -45,21 +45,26 @@
 // setTimeout(cb1, 2000);
 // console.log("After");
 
-console.log("Before");
+// console.log("Before");
 
-const cb2 = () => {
-  console.log("Set timeout 1");
-  console.log(Date.now());
-  let timeInFuture = Date.now() + 5000;
-  console.log(timeInFuture);
-  while (Date.now() < timeInFuture) {}
-};
+// const cb2 = () => {
+//   console.log("Set timeout 1");
+//   console.log(Date.now());
+//   let timeInFuture = Date.now() + 5000;
+//   console.log(timeInFuture);
+//   while (Date.now() < timeInFuture) {}
+// };
 
-const cb1 = () => console.log("hello");
+// const cb1 = () => console.log("hello");
 
-setTimeout(cb2, 1000);
+// setTimeout(cb2, 1000);
 
-setTimeout(cb1, 2000);
+// setTimeout(cb1, 2000);
 
-// queue cb2 , cb1
-console.log("After");
+// // queue cb2 , cb1
+// console.log("After");
+
+(function multiply() {
+  console.log(this);
+  console.log(2 * 3);
+})();
