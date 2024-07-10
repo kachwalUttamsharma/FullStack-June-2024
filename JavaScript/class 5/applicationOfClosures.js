@@ -105,3 +105,19 @@ console.log(optimizedCalc(3));
 console.log(optimizedCalc(3));
 
 // creating private variable using closures
+function CreatePrivateVariable(val){
+  let privateVariable = val;
+  return {
+    setValue : function(val){
+      privateVariable = val;
+    },
+    getValue : function(){
+      return privateVariable;
+    }
+  };
+}
+
+const privateObj = CreatePrivateVariable(20); // Initializing the privateVariable
+console.log(privateObj.getValue()); // 20
+privateObj.setValue(30); // privateVariable is set to 30
+console.log(privateObj.getValue()); // 30
