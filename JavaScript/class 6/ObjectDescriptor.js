@@ -13,7 +13,8 @@
 // like is it editable (writable) -> helps to create final variable or constant variable in object
 // or is it emmunerable -> helps to decide whether particular property should be available
 // in iteration
-// or is it configurable -> protect its properties and functions
+// or is it configurable -> protect its properties and functions and doesnt allow new additions
+// or deletion of exisinting property
 
 const person = {};
 Object.defineProperty(person, "firstName", {
