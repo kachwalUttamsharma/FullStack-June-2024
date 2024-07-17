@@ -39,5 +39,5 @@ function main(intervalTime, endTime, message, arr) {
     }, intervalTime);
     // X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X=X
 }
-let arr=[];
+const arr=[];
 main(1000,4000,"print message",arr);
