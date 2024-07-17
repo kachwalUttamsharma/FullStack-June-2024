@@ -41,3 +41,32 @@ function main(intervalTime, endTime, message, arr) {
 }
 const arr=[];
 main(1000,4000,"print message",arr);
+
+// ======= Approach 3 ======= //
+function mainFuntion(intervalTime, endTime, message, arr) {
+    let isEndTime = false;
+    function mySetInterval(callback, time) {
+        if(!isEndTime){
+            setTimeout(function(){
+                callback();
+                mySetInterval(callback, time);
+            }, time);
+        }
+    }
+
+    mySetInterval(function () {
+        arr.push(message);
+        console.log(arr);
+        // Output:
+        // [ 'hello' ]  <- 1st Interval
+        // [ 'hello', 'hello' ]  <- 2nd Interval
+        // [ 'hello', 'hello', 'hello' ]  <- 3rd Interval
+        // [ 'hello', 'hello', 'hello', 'hello' ]  <- 4th Interval
+        // [ 'hello', 'hello', 'hello', 'hello', 'hello' ] <- 5th Interval
+    }, intervalTime);
+    setTimeout(()=>{
+        isEndTime = true;
+    },endTime);
+}
+
+mainFuntion(1000, 5000, "hello", []);
