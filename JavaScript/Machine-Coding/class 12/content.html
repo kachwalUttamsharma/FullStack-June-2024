@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="hifine">I am h1</h1>
+    <h1>I am another</h1>
+    <h2>I am h1</h2>
+    <h3>I am h1</h3>
+    <div id="unique">
+      <p class="para">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet inventore
+        adipisci dignissimos voluptatibus ad debitis vel natus nobis? Doloribus
+        fugit vitae veritatis esse! Cumque odio quasi sapiente quisquam est!
+        Odio!
+      </p>
+      <p class="para" style="display: none">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet inventore
+        adipisci dignissimos voluptatibus ad debitis vel natus nobis? Doloribus
+        fugit vitae veritatis esse! Cumque odio quasi sapiente quisquam est!
+        Odio!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet inventore
+        adipisci dignissimos voluptatibus ad debitis vel natus nobis? Doloribus
+        fugit vitae veritatis esse! Cumque odio quasi sapiente quisquam est!
+        Odio!
+      </p>
+    </div>
+
+    <input type="text" />
+    <input type="password" id="textInput" />
+    <input type="text" />
+    <button>click</button>
+  </body>
+  <script>
+    // content
+    const h1tag = document.querySelector(".hifine");
+    console.log(" h1tag ", h1tag.innerHTML);
+    console.log(" h1tag ", h1tag.innerText);
+    console.log(" h1tag ", h1tag.textContent);
+
+    const div = document.querySelector("#unique");
+    // it returns us html
+    console.log(" div-1 innerHTML ", div.innerHTML);
+    // it returns content with after analyzing css conditions
+    console.log(" div-2 innerText ", div.innerText);
+    // it returns content
+    console.log(" div-3 textContent ", div.textContent);
+
+    // style
+    div.style.backgroundColor = "lightyellow";
+    div.style.color = "red";
+
+    // attributes
+    div.setAttribute("name", "container");
+    const textInput = document.querySelector("#textInput");
+    console.log(textInput.getAttribute("type"));
+    textInput.setAttribute("surya", "vishnu");
+    textInput.setAttribute("value", "vishnu");
+  </script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Coding -1</title>
+  </head>
+  <body>
+    <!-- DOM as a object which is generated post your html is converted into tree like structure -->
+    <h1 class="m2">I am h1</h1>
+    <h1 id="m1" class="m2">Machine Coding</h1>
+    <h1>I am h2</h1>
+    <input type="text" />
+    <input type="password" />
+  </body>
+  <script>
+    // read operation
+    // query selector returns node and query selectorall returns us nodelist
+    // const h1tag = document.querySelector("#m1");
+    // console.log(h1tag);
+
+    const h1stag = document.querySelectorAll(".m2");
+    console.log(Array.from(h1stag));
+
+    // const inputPass = document.querySelector('input[type="password"]');
+    // console.log(inputPass);
+
+    // getElementsByTagName is returning htmlcollection
+
+    // const h1tags = document.getElementsByTagName("h1");
+    // console.log(h1tags);
+
+    // const h2Tag = document.getElementById("m1");
+    // console.log(h2Tag);
+
+    const h1class = document.getElementsByClassName("m2");
+    console.log(h1class);
+  </script>
+</html>
