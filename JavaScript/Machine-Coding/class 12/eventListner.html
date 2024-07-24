@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Listner</title>
+  </head>
+  <body>
+    <button>click Me</button>
+    <input type="text" value="vdfkjvd" />
+  </body>
+  <script>
+    const body = document.querySelector("body");
+    const ip = document.querySelector("input");
+    const btn = document.querySelector("button");
+    const ul = document.querySelector("ul");
+    const ulTag = document.createElement("ul");
+    btn.addEventListener("click", () => {
+      console.log("before");
+      console.log(ip.value);
+      if (ip.value.length > 0) {
+        const liTag = document.createElement("li");
+        liTag.textContent = ip.value;
+        ulTag.appendChild(liTag);
+        body.appendChild(ulTag);
+      }
+      console.log("after");
+    });
+  </script>
+</html>
