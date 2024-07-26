@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div[id] {
+        border: 1px solid red;
+      }
+
+      #outer_box {
+        height: 10rem;
+        width: 10rem;
+        background-color: lightblue;
+      }
+
+      #inner_box {
+        height: 50%;
+        width: 50%;
+        background-color: lightgreen;
+        margin-top: 10px;
+      }
+
+      #button {
+        margin-top: 3px;
+        background-color: lightsalmon;
+        width: 50%;
+        margin-left: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Bubbling</h1>
+    <div id="outer_box">
+      <div id="inner_box">
+        <div id="button">Click Me</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const outerBox = document.querySelector("#outer_box");
+    const innerBox = document.querySelector("#inner_box");
+    const button = document.querySelector("#button");
+
+    button.addEventListener(
+      "click",
+      (e) => {
+        console.log("button-1 got clicked");
+        e.stopImmediatePropagation();
+      },
+      true
+    );
+
+    button.addEventListener(
+      "click",
+      (e) => {
+        console.log("button got clicked");
+        e.stopPropagation();
+      },
+      true
+    );
+
+    innerBox.addEventListener(
+      "click",
+      (e) => {
+        console.log("innerbox got clicked");
+        //  e.stopPropagation();
+      },
+      true
+    );
+
+    outerBox.addEventListener(
+      "click",
+      () => {
+        console.log("outerBox got clicked");
+      },
+      true
+    );
+  </script>
+</html>
