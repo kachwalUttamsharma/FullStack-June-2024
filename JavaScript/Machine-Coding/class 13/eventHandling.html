@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - Examples</title>
+    <style>
+      .box {
+        background-color: lightcoral;
+        border: 1px solid green;
+        height: 10rem;
+        width: 10rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- mouse : click ,left click, right click, scroll, double click, hover
+    click mousedown, mouseup -->
+    <!-- keyboard : keydown, keyup, keypress = keydown+keyup -->
+    <div class="box"></div>
+    <input type="text" />
+  </body>
+  <script>
+    // const div = document.querySelector(".box");
+
+    // div.addEventListener("mouseover", () => {
+    //   console.log("mouseover event");
+    // });
+
+    // div.addEventListener("mouseleave", () => {
+    //   console.log("mouseleave event");
+    // });
+
+    // div.addEventListener("mouseenter", () => {
+    //   console.log("mouseenter event");
+    // });
+
+    // div.addEventListener("click", () => {
+    //   console.log("click event");
+    // });
+
+    // div.addEventListener("dblclick", () => {
+    //   console.log("dblclick event");
+    // });
+
+    // div.addEventListener("mouseup", () => {
+    //   console.log("mouseup event");
+    // });
+
+    // div.addEventListener("mousedown", () => {
+    //   console.log("mousedown event");
+    // });
+
+    const div = document.querySelector("input");
+    div.addEventListener("keydown", (cb) => {
+      console.log("keydown event");
+      console.log(cb);
+    });
+
+    // div.addEventListener("keyup", () => {
+    //   console.log("keyup event");
+    // });
+
+    // div.addEventListener("keypress", () => {
+    //   console.log("keypress event");
+    // });
+  </script>
+</html>
