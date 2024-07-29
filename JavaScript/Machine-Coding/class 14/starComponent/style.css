@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.star_container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.star {
+  font-size: 2rem;
+  color: gray;
+}
+
+.yellow {
+  color: yellow;
+}
