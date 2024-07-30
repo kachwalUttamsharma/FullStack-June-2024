@@ -1,0 +1,50 @@
+<!-- Requirements - star component
+
+Must have features: 
+ 1. Rating from 1 to 5
+ 2. when clicked it, rating should appear
+ 3. on hover selection of stars should toggle
+
+Good to have features:
+1. partial star selection
+2. emojis instead of numbers
+3. silder can their be use 
+
+Approach
+
+    you have to listen to 3 events
+    1. click 
+        update the star upto the level
+        update the rating upto the level
+    2. mouseover
+        change stars to that level to show them highlighted
+    3. mouseleave
+        stars should return back to gray        
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Rating</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Star Rating Component</h1>
+
+      <div id="star_container" class="star_container">
+        <div class="star" idx="1">&#9733;</div>
+        <div class="star" idx="2">&#9733;</div>
+        <div class="star" idx="3">&#9733;</div>
+        <div class="star" idx="4">&#9733;</div>
+        <div class="star" idx="5">&#9733;</div>
+      </div>
+      <h2>Rating Count : <span id="count">0</span></h2>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
