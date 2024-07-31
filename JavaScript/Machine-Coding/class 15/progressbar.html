@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Bar</title>
+    <style>
+      .progress-bar {
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 0.4rem;
+        margin: 15px;
+        padding: 3px;
+      }
+      .progress-bar .bar {
+        background-color: rgb(87, 119, 62);
+        border-radius: 0.4rem;
+        height: 100%;
+        transition: width 3ms;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar">
+      <div class="bar" style="width: 20%"></div>
+    </div>
+  </body>
+  <script>
+    const token = setInterval(() => {
+      const bar = document.querySelector(".bar");
+      const currentPercentage = parseInt(bar.style.width);
+      if (currentPercentage < 100) {
+        const newPercentage = `${currentPercentage + 10}%`;
+        bar.style.width = newPercentage;
+      } else {
+        clearInterval(token);
+      }
+    }, 1500);
+  </script>
+</html>

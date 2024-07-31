@@ -1,0 +1,22 @@
+#gridContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-item {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#controls {
+  margin-top: 20px;
+}
