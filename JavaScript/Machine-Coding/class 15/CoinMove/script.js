@@ -57,5 +57,4 @@ function moveCoin(direction) {
   }
 }
 
-// Initialize the grid
 generateGrid();
