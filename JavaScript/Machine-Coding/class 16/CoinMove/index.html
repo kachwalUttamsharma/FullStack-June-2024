@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Movement</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <label for="gridSize">Enter grid size:</label>
+        <input type="number" id="gridSize" min="1" value="2" />
+        <button onclick="generateGrid()">Generate Grid</button>
+      </div>
+      <div id="gridContainer"></div>
+      <div id="controls">
+        <button onclick="moveCoin('up')">Up</button>
+        <button onclick="moveCoin('left')">Left</button>
+        <button onclick="moveCoin('right')">Right</button>
+        <button onclick="moveCoin('down')">Down</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
