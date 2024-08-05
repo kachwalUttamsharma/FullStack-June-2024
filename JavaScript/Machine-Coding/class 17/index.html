@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoComplete Feature</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="autocomplete">
+      <h2>AutoComplete / TypeAhead Search</h2>
+      <label for="search_input">Search for a country:</label>
+      <input
+        type="text"
+        class="search_input"
+        id="search_input"
+        placeholder="Start typing..."
+      />
+      <ul id="suggestion_box" class="suggestion_box"></ul>
+      <p id="no_results" class="no_results">No Countries Found.</p>
+    </div>
+    <script src="fetchData.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
