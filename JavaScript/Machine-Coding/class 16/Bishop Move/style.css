@@ -1,0 +1,33 @@
+.heading {
+  text-align: center;
+}
+
+.table {
+  margin: 0 auto;
+}
+
+.box {
+  height: 5rem;
+  width: 5rem;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.white {
+  background-color: antiquewhite;
+}
+
+.black {
+  background-color: black;
+}
+
+.yellow {
+  background-color: rgb(224, 224, 140);
+}
+
+/* in table row if row is odd then even table data is black
+/* in table row if row is event then odd table data is black */
+/* tr:nth-child(odd) > td:nth-child(even) {
+  background-color: black;
+} */
