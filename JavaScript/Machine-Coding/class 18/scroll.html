@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 2000px;
+        width: 95%;
+        margin: 2rem;
+        border: 2px solid black;
+        border-radius: 12px;
+        background-color: rgb(234, 217, 195);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scroll down to the end of the box</h1>
+    <div>Box</div>
+    <script>
+      function throttle(fn, delay) {
+        let lastCall = 0;
+        return function (...args) {
+          const date = new Date().getTime();
+          if (date - lastCall < delay) {
+            return;
+          }
+          lastCall = date;
+          return fn(...args);
+        };
+      }
+      // expensive
+      function handleScroll(event) {
+        console.log(new Date().toLocaleTimeString());
+      }
+      window.addEventListener("scroll", throttle(handleScroll, 2000));
+    </script>
+  </body>
+</html>

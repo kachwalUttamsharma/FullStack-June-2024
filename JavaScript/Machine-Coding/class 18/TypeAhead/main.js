@@ -3,6 +3,7 @@ import getCountries from "./fetchData.js";
 const input_box = document.getElementById("search_input");
 const suggest_box = document.getElementById("suggestion_box");
 const noResults = document.getElementById("no_results");
+let controller;
 
 const populateSuggestionBox = (countryNameArr) => {
   suggest_box.innerHTML = "";
@@ -22,6 +23,11 @@ const populateSuggestionBox = (countryNameArr) => {
   }
 };
 const handleSuggestion = async (event) => {
+  if (controller) {
+    controller.abort();
+  }
+  controller = new AbortController();
+  const signal = controller.signal;
   try {
     const keyword = event.target.value.trim();
     if (keyword.length < 2) {
@@ -29,7 +35,7 @@ const handleSuggestion = async (event) => {
       noResults.classList.remove("visible");
       return;
     }
-    let countryNameArr = await getCountries(keyword);
+    let countryNameArr = await getCountries(keyword, signal);
     countryNameArr = countryNameArr.map((country) => country?.name?.common);
     populateSuggestionBox(countryNameArr);
   } catch (error) {
@@ -50,6 +56,7 @@ function debounce(fn, delay) {
 }
 
 // callback
+// input_box.addEventListener("input", debounce(handleSuggestion, 500));
 input_box.addEventListener("input", debounce(handleSuggestion, 500));
 
 suggest_box.addEventListener("click", (event) => {

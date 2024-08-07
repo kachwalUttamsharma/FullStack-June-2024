@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Real-time Throttling Example</h1>
+      <p id="resize-info">Resize the window to see throttling in action.</p>
+    </div>
+    <script>
+      function throttle(fn, delay) {
+        let token = null;
+        return function (...args) {
+          if (!token) {
+            fn(...args);
+            token = setTimeout(() => {
+              //   clearTimeout(token);
+              token = null;
+            }, delay);
+          }
+        };
+      }
+      function updateResizeInfo(event) {
+        const resizeInfo = document.getElementById("resize-info");
+        resizeInfo.textContent = `Window resized to ${window.innerHeight} * ${window.innerWidth}`;
+      }
+      window.addEventListener("resize", throttle(updateResizeInfo, 2000));
+      // window.addEventListener("resize", updateResizeInfo);
+    </script>
+  </body>
+</html>
