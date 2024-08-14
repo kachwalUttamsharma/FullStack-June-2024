@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="toolbox_cont">
+    <header class="toolbox_cont">
       <div class="toolbox-priority-cont">
         <div class="color pink"></div>
         <div class="color blue"></div>
@@ -20,27 +20,37 @@
         <div class="color green"></div>
       </div>
       <div class="action-btn-cont">
-        <div class="add-btn">
+        <div class="add-btn" role="button for creating new task">
           <i class="fa-solid fa-plus"></i>
         </div>
-        <div class="remove-btn">
+        <div class="remove-btn" role="button for enabling delete task">
           <i class="fa-solid fa-trash"></i>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="main_cont">
-      <!-- <div class="ticket-cont">
-        <div class="ticket-color green"></div>
-        <div class="ticket-id">#eidut3</div>
-        <div class="ticket-area">Some Task</div>
-        <div class="lock-unlock">
-          <i class="fa-solid fa-lock"></i>
-        </div>
-      </div> -->
-    </div>
+    <main class="main_cont">
+      <div class="heading_cont">
+        <h2 class="task_heading--pending">Pending</h2>
+        <h2 class="task_heading--finished">Finished</h2>
+      </div>
 
-    <div class="modal-cont">
+      <div class="container_wrapper">
+        <!-- polite, assertive -->
+        <div
+          class="pending-cont container"
+          aria-label="pending task"
+          aria-live="assertive"
+        ></div>
+        <div
+          class="finished-cont container"
+          aria-label="finished task"
+          aria-live="assertive"
+        ></div>
+      </div>
+    </main>
+
+    <dialog class="modal-cont">
       <textarea class="textarea-cont" placeholder="Enter Your Task"></textarea>
       <div class="priority-color-cont">
         <div class="priority-color pink"></div>
@@ -48,7 +58,7 @@
         <div class="priority-color green active"></div>
         <div class="priority-color purple"></div>
       </div>
-    </div>
+    </dialog>
   </body>
   <script
     src="https://cdn.jsdelivr.net/npm/short-unique-id@4.4.4/dist/short-unique-id.min.js"

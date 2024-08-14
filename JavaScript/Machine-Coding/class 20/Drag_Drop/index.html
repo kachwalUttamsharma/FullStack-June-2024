@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: inline-block;
+        border: 1px solid gray;
+        width: 200px;
+        margin: 10px;
+        padding: 10px;
+      }
+
+      .box {
+        height: 30px;
+        padding: 5px;
+        margin: 5px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        cursor: grab;
+      }
+
+      #container > .box {
+        background-color: lightgrey;
+      }
+
+      #container2 > .box {
+        background-color: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag and Drop Example</h1>
+
+    <div class="container" id="container">
+      <div class="box" draggable="true">Box 1</div>
+      <div class="box" draggable="false">Box 2</div>
+      <div class="box" draggable="false">Box 3</div>
+    </div>
+
+    <div class="container" id="container2">
+      <div class="box" draggable="true">Box 1</div>
+      <div class="box" draggable="true">Box 2</div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

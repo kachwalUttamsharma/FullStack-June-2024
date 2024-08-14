@@ -8,6 +8,8 @@ const mainContainer = document.querySelector(".main_cont");
 const toolBoxPriorityContainer = document.querySelector(
   ".toolbox-priority-cont"
 );
+const pendingContainer = document.querySelector(".pending-cont");
+const finishedContainer = document.querySelector(".finished-cont");
 const uid = new ShortUniqueId();
 const colors = ["pink", "blue", "purple", "green"];
 let currentColor = "green";
@@ -19,7 +21,12 @@ window.addEventListener("load", () => {
   if (getAllTicket) {
     for (let i = 0; i < getAllTicket.length; i++) {
       let ticketObj = getAllTicket[i];
-      createTicket(ticketObj.content, ticketObj.color, ticketObj.id);
+      createTicket(
+        ticketObj.content,
+        ticketObj.color,
+        ticketObj.id,
+        ticketObj.isPending
+      );
     }
   }
 });
@@ -89,18 +96,24 @@ prioritySetModal.addEventListener("click", (e) => {
   e.target.classList.add("active");
 });
 
-function createTicket(content, currentColor, cId) {
+function createTicket(content, currentColor, cId, isPending = true) {
   const id = cId || uid();
   //   console.log(id, content, currentColor);
   const ticketContainer = document.createElement("div");
   ticketContainer.setAttribute("class", "ticket-cont");
+  ticketContainer.setAttribute("draggable", "true");
   ticketContainer.innerHTML = `<div class="ticket-color ${currentColor}"></div>
   <div class="ticket-id">${id}</div>
   <div class="ticket-area">${content}</div>
   <div class="lock-unlock">
     <i class="fa-solid fa-lock"></i>
   </div>`;
-  mainContainer.appendChild(ticketContainer);
+  if (isPending == true) {
+    pendingContainer.appendChild(ticketContainer);
+  } else {
+    finishedContainer.appendChild(ticketContainer);
+  }
+
   // changing status color
   const ticketColorElem = ticketContainer.querySelector(".ticket-color");
   AddColorChangeListners(ticketColorElem, id);
@@ -115,6 +128,7 @@ function createTicket(content, currentColor, cId) {
     id: id,
     content: content,
     color: currentColor,
+    isPending: true,
   };
   allTickets.push(ticketObj);
   if (!cId) {
@@ -174,3 +188,38 @@ function deleteTask(ticketContainer, id) {
 function updateLocalStorage() {
   localStorage.setItem("localTask", JSON.stringify(allTickets));
 }
+
+const container = document.querySelectorAll(".container");
+
+let draggedElement = null;
+container.forEach((container) => {
+  // 1 - start
+  container.addEventListener("dragstart", (event) => {
+    console.log("Drag is started on ", container);
+    // console.log(event.target);
+    draggedElement = event.target;
+  });
+  container.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    // console.log("Dragging is going on");
+  });
+  // 3 - end the cycle
+  container.addEventListener("dragend", (event) => {
+    console.log("Dragging is finised", container);
+  });
+  // 2 - drop
+  container.addEventListener("drop", (event) => {
+    console.log("Dropped happended");
+    if (draggedElement) {
+      container.appendChild(draggedElement);
+      const isPending =
+        container.classList[0] === "pending-cont" ? true : false;
+      const cId = draggedElement.querySelector(".ticket-id").innerText;
+      const ticketObj = allTickets.find((ticket) => {
+        return ticket.id === cId;
+      });
+      ticketObj.isPending = isPending;
+      updateLocalStorage();
+    }
+  });
+});
