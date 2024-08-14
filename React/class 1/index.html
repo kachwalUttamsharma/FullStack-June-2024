@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Introduction</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- <div id="parent">
+      <div id="child">
+        <h1 id="greeting">Hello From React</h1>
+        <h1 id="greeting1">Hello From React-1</h1>
+      </div>
+    </div> -->
+  </body>
+  <script type="text/babel">
+    // const h1Tag = document.createElement("h1");
+    // h1Tag.textContent = "Hello World";
+    // const h1Tag = React.createElement(
+    //   "h1",
+    //   {
+    //     id: "hello",
+    //     style: {
+    //       color: "lightblue",
+    //       border: "1px solid gray",
+    //       padding: "20px",
+    //     },
+    //     name: "textContent",
+    //   },
+    //   "Hello world from React"
+    // );
+    // const container = React.createElement(
+    //   "div",
+    //   { id: "parent" },
+    //   React.createElement("div", { id: "child" }, [
+    //     React.createElement(
+    //       "h1",
+    //       {
+    //         id: "greeting",
+    //         style: {
+    //           color: "lightblue",
+    //           border: "1px solid gray",
+    //           padding: "20px",
+    //         },
+    //         name: "textContent",
+    //       },
+    //       "Hello world from React"
+    //     ),
+    //     React.createElement(
+    //       "h1",
+    //       {
+    //         id: "greeting1",
+    //         style: {
+    //           color: "lightred",
+    //           border: "1px solid gray",
+    //           padding: "20px",
+    //         },
+    //         name: "textContent",
+    //       },
+    //       "Hello world from React 1"
+    //     ),
+    //   ])
+    // );
+
+    // JSX -> JavaScript XML
+    function H2Tag() {
+      return (
+        <div id="parent">
+          <div id="child">
+            <h1 id="greeting">Hello From React</h1>
+            <h1 id="greeting1">Hello From React-1</h1>
+          </div>
+        </div>
+      );
+    }
+    function H1Tag() {
+      return (
+        <div id="parent">
+          <div id="child">
+            <h1 id="greeting">Hello From React</h1>
+            <h1 id="greeting1">Hello From React-1</h1>
+            <h2>{H2Tag()}</h2>
+            <h2>{H2Tag()}</h2>
+          </div>
+        </div>
+      );
+    }
+
+    // JSX -> Babel -> ReactDom -> DOM
+    const body = document.querySelector("body");
+    // body.appendChild(h1Tag);
+    ReactDOM.render(<H1Tag />, body);
+  </script>
+</html>
