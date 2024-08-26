@@ -1,16 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import NavBar from "./Components/NavBar";
+import Home from "./Components/Home";
+import WatchList from "./Components/WatchList";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1 className="text-3xl font-bold underline bg-slate-600 text-green-200 text-opacity-35 border-4  border-red-300 rounded-sm">
-        Hello world!
-      </h1>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/watchList" element={<WatchList />} />
+      </Routes>
     </>
   );
 }
