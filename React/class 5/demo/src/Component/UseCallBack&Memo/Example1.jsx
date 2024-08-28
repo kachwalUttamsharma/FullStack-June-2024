@@ -5,7 +5,6 @@ const Example1 = () => {
   return (
     <div>
       <ParentComponent />
-      <Counter />
     </div>
   );
 };
@@ -17,12 +16,15 @@ const ParentComponent = () => {
 
   // cached function
   // same reference
-  const removeItem = useCallback((itemNeedToBeRemoved) => {
-    console.log("remove item being called");
-    setItems((prevItems) =>
-      prevItems.filter((item) => item != itemNeedToBeRemoved)
-    );
-  }, []);
+  const removeItem = useCallback(
+    (itemNeedToBeRemoved) => {
+      console.log("remove item being called");
+      setItems((prevItems) =>
+        prevItems.filter((item) => item != itemNeedToBeRemoved)
+      );
+    },
+    [setItems]
+  );
 
   return (
     <div>
@@ -45,25 +47,4 @@ const ChildComponent = React.memo(({ item, removeItem }) => {
       {item} <button onClick={() => removeItem(item)}>Remove</button>
     </div>
   );
-});
-
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const increment = useCallback(() => {
-    setCount((prevCount) => prevCount + 1);
-  }, []);
-
-  return (
-    <div>
-      <h1>Count: {count}</h1>
-      <ChildCounterComponent increment={increment} />
-    </div>
-  );
-};
-
-const ChildCounterComponent = React.memo(({ increment }) => {
-  console.log("ChildComponent rendered");
-
-  return <button onClick={increment}>Increment</button>;
 });

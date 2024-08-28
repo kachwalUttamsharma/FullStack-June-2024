@@ -8,7 +8,7 @@ const Pagination = ({ pageNo, handlePrevious, handleNext }) => {
       </div>
       <div>{pageNo}</div>
       <div onClick={handleNext}>
-        <i class="fa-solid fa-arrow-right"></i>
+        <i className="fa-solid fa-arrow-right"></i>
       </div>
     </div>
   );
