@@ -38,7 +38,7 @@ const WatchList = () => {
           {watchList.length > 0 &&
             watchList.map((movie) => {
               return (
-                <tr>
+                <tr key={movie.id}>
                   <td className="flex items-center px-6 py-4 font-normal text-gray-900">
                     <img
                       className="h-[6rem] w-[10rem] object-cover"
