@@ -2,16 +2,7 @@ import React from "react";
 
 const MovieCard = React.memo(
   ({ movie, addToWatchList, watchList, removeFromWatchList }) => {
-    console.log("rendering from moviecard");
-    // whether a perticular movie is in watchlist
-    const doesContain = (movie) => {
-      for (let i = 0; i < watchList?.length; i++) {
-        if (watchList[i].id === movie.id) {
-          return true;
-        }
-      }
-      return false;
-    };
+    console.log("rendering for " + movie.id);
     return (
       <div
         style={{
@@ -19,7 +10,7 @@ const MovieCard = React.memo(
         }}
         className="h-[30vh] md:w-[200px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer flex flex-col justify-between items-end"
       >
-        {!doesContain(movie) ? (
+        {!watchList.has(movie.id) ? (
           <div
             className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60"
             onClick={() => addToWatchList(movie)}
@@ -41,7 +32,8 @@ const MovieCard = React.memo(
         </div>
       </div>
     );
-  }
+  },
+  (prevProps, nextProps) => prevProps.watchList.has(prevProps.movie.id) === nextProps.watchList.has(nextProps.movie.id)
 );
 
 export default MovieCard;

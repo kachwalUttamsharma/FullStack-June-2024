@@ -1,1 +1,100 @@
 // Seal vs Freeze and its polyfills
+/*
+    1. Object.seal():
+        1. Object.seal() is a method that seals an object, preventing the addition or deletion of properties, 
+           while allowing the modification of existing properties.
+        2. Sealed objects are still mutable, meaning you can change the values of the existing properties.
+        3. However, you cannot add new properties or remove existing ones.
+        4. The Object.isSealed() method can be used to check if an object is sealed.
+
+    2. Object.freeze():
+        1. Object.freeze() is a method that freezes an object, making it completely immutable.
+        2. Frozen objects are read-only, and no modifications, additions, or deletions of properties are allowed.
+        3. The Object.isFrozen() method can be used to check if an object is frozen.
+*/
+
+// Polyfills
+// Seal
+Object.defineProperty(Object.prototype, "mySeal", {
+    value: function(obj) {
+        Object.preventExtensions(obj);
+        for(const key in obj) {
+            if(obj[key] !== null && typeof obj[key] === "object") {
+                Object.mySeal(obj[key]);
+            }
+            Object.defineProperty(obj, key, {
+                configurable: false
+            })
+        }
+        return obj;
+    },
+    enumerable: false
+});
+
+const obj = {
+    name: "hello",
+    inner : {
+        age: 25,
+        class: "MS"
+    }
+}
+
+// const obj2 = Object.mySeal(obj);
+// console.log(Object.isSealed(obj2)); // verification
+
+Object.defineProperty(Object.prototype, "myIsSealed", {
+    value: function(obj) {
+        if(Object.isExtensible(obj)) {
+            return false;
+        }
+        for(const key in obj) {
+            const descriptor = Object.getOwnPropertyDescriptor(obj, key);
+            if(descriptor.configurable) {
+                return false;
+            }
+        }
+        return true;
+    },
+    enumerable: false
+});
+
+// console.log(Object.myIsSealed(obj2));
+
+// Freeze
+Object.defineProperty(Object.prototype, "myFreeze", {
+    value: function(obj) {
+        Object.preventExtensions(obj);
+        for(const key in obj) {
+            if(obj[key] !== null && typeof obj[key] === "object") {
+                Object.mySeal(obj[key]);
+            }
+            Object.defineProperty(obj, key, {
+                configurable: false,
+                writable: false
+            })
+        }
+        return obj;
+    },
+    enumerable: false
+})
+
+const obj3 = Object.myFreeze(obj);
+// console.log(Object.isFrozen(obj3));
+
+Object.defineProperty(Object.prototype, "myIsFrozen", {
+    value: function(obj) {
+        if(Object.isExtensible(obj)) {
+            return false;
+        }
+        for(const key in obj) {
+            const descriptor = Object.getOwnPropertyDescriptor(obj, key);
+            if(descriptor.configurable || descriptor.writable) {
+                return false;
+            }
+        }
+        return true;
+    },
+    enumerable: false
+});
+
+// console.log(Object.myIsFrozen(obj3));

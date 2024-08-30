@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Pagination from "./Pagination";
-import MovieCard from "./MovieCard";
 import axios from "axios";
+import React, { useCallback, useEffect, useState } from "react";
+import MovieCard from "./MovieCard";
+import Pagination from "./Pagination";
 
 const Movies = () => {
   const [pageNo, setPageNo] = useState(1);
   const [movies, setMovies] = useState([]);
-  const [watchList, setWatchList] = useState([]);
+  const [watchList, setWatchList] = useState(() => {
+    const savedWatchList = localStorage.getItem('watchList');
+    return savedWatchList ? new Map(JSON.parse(savedWatchList)) : new Map();
+  });
 
   useEffect(() => {
     axios
@@ -18,10 +21,6 @@ const Movies = () => {
         setMovies(Movies);
       });
   }, [pageNo]);
-
-  useEffect(() => {
-    setWatchList(JSON.parse(localStorage.getItem("movies")));
-  }, []);
 
   const handleNext = () => {
     setPageNo((prevPage) => prevPage + 1);
@@ -37,22 +36,24 @@ const Movies = () => {
   };
 
   const addToWatchList = useCallback((movie) => {
-    setWatchList((prevState) => {
-      const updatedWatchList = prevState ? [...prevState, movie] : [movie];
-      localStorage.setItem("movies", JSON.stringify(updatedWatchList));
+    setWatchList(prevState => {
+      const updatedWatchList = new Map(prevState);
+      updatedWatchList.set(movie.id, movie);
       return updatedWatchList;
     });
   }, []);
 
   const removeFromWatchList = useCallback((movie) => {
-    setWatchList((PrevState) => {
-      const filteredWatchList = PrevState?.filter((m) => {
-        return m.id != movie.id;
-      });
-      localStorage.setItem("movies", JSON.stringify(filteredWatchList));
+    setWatchList(prevState => {
+      const filteredWatchList = new Map(prevState);
+      filteredWatchList.delete(movie.id);
       return filteredWatchList;
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('watchList', JSON.stringify([...watchList]));
+  }, [watchList])
 
   return (
     <div>

@@ -14,7 +14,7 @@ const Banner = () => {
         `https://api.themoviedb.org/3/trending/movie/day?api_key=0fa9d94b072b5c497f3a9720acb86bc2&language=en-US&page=1`
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         const firstMovie = response?.data?.results[0];
         const title = firstMovie?.title;
         const poster = firstMovie["backdrop_path"];
