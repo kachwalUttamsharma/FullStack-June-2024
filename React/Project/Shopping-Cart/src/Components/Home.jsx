@@ -6,41 +6,13 @@ import cartSlice from "../Store/cartSlice";
 import useFetchData from "../hook/useFetchData";
 
 const Home = () => {
-  //   const [data, setData] = useState([]);
-  //   const [loader, setLoader] = useState(false);
-  //   const [error, setError] = useState("");
-
-  //   const { data, status } = useSelector((state) => state.products);
-  //   const { setStatus, setProducts } = productSlice.actions;
-
   const { data, status } = useFetchData(fetchProducts, "products");
-  console.log("from home comp");
   const { add } = cartSlice.actions;
   const dispatch = useDispatch();
-  //   useEffect(() => {
-  //     try {
-  //       dispatch(setStatus(STATUSES.LOADING));
-  //       //   setLoader(true);
-  //       async function getData() {
-  //         const res = await axios.get("https://fakestoreapi.com/products");
-  //         // setData(res?.data);
-  //         dispatch(setStatus(STATUSES.SUCCESS));
-  //         dispatch(setProducts(res?.data));
-  //       }
-  //       getData();
-  //     } catch (error) {
-  //       //   setError(error);
-  //       dispatch(setStatus(STATUSES.ERROR));
-  //     }
-  //   }, []);
-
-  //   useEffect(() => {
-  //     dispatch(fetchProducts());
-  //   }, []);
-
   const addToCartHandler = (product) => {
     dispatch(add(product));
   };
+
   return (
     <div>
       {status === STATUSES.LOADING && (
