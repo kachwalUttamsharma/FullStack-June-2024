@@ -62,20 +62,26 @@ const Carousel = () => {
     }
   };
   return (
-    <div>
-      <button onClick={prevHandler}>Prev</button>
+    <>
       <div>
-        <img
-          width="200"
-          height="200"
-          src={items[currentItem]?.imageUrl}
-          alt={items[currentItem]?.title}
-        />
-        <h2>{items[currentItem]?.title}</h2>
-        <p>{items[currentItem]?.description}</p>
+        <button onClick={prevHandler}>Prev</button>
+        <div>
+          <img
+            width="200"
+            height="200"
+            src={items[currentItem]?.imageUrl}
+            alt={items[currentItem]?.title}
+          />
+          <h2>{items[currentItem]?.title}</h2>
+          <p>{items[currentItem]?.description}</p>
+        </div>
+        <button onClick={nextHandler}>Next</button>
       </div>
-      <button onClick={nextHandler}>Next</button>
-    </div>
+
+      <button onClick={show}>Show Modal</button>
+      <button onClick={toggle}>Toogle Modal</button>
+      <Modal isVisible={isVisible} hide={hide} />
+    </>
   );
 };
 
