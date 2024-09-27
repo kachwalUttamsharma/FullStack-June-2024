@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "fd7719da-1f61-492a-b3b7-482b08ba86df",
+		"name": "Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30258682"
+	},
+	"item": [
+		{
+			"name": "addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_name\": \"iphone 16 pro max\",\n    \"product_price\": \"350\",\n    \"isInStock\": true,\n    \"category\": \"electronics\",\n    \"color\": \"black\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/shopApi/addProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shopApi",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/shopApi/getAllProducts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shopApi",
+						"getAllProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProduct",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_description\": \"iphone latest phone 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/shopApi/updateProduct/66f6e6148537b3be",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shopApi",
+						"updateProduct",
+						"66f6e6148537b3be"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/shopApi/deleteProduct/66f6e5517536907079c03e66",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shopApi",
+						"deleteProduct",
+						"66f6e5517536907079c03e66"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

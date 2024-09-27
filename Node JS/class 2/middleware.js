@@ -18,7 +18,10 @@ const auth = (req, res, next) => {
     throw new Error("user is not valid");
   }
 };
-app.use(errorHandler);
+
+// use next mostly in async callback
+// use throw new error synchronouse use case
+
 app.use(loggerMiddleware);
 app.use(express.static("public"));
 
@@ -31,6 +34,8 @@ app.get("/", (req, res) => {
 app.get("/1", auth, (req, res) => {
   res.send("Middleware App 1");
 });
+
+app.use(errorHandler);
 
 app.listen(port, (req, res) => {
   console.log("Middleware app is running on ", port);
