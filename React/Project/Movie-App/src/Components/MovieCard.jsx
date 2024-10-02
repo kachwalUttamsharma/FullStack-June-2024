@@ -42,6 +42,22 @@ const MovieCard = React.memo(
         </div>
       </div>
     );
+  },(prevProps,newProps) => { 
+    const oldWatchList = prevProps.watchList;
+    const newWatchList = newProps.watchList;
+    let isInOldWatchList = false;
+    let isInNewWatchList = false;
+    for (let i = 0; i < oldWatchList?.length; i++) {
+      if (oldWatchList[i].id === prevProps.movie.id) {
+        isInOldWatchList = true;
+      }
+    }
+    for (let i = 0; i < newWatchList?.length; i++) {
+      if (newWatchList[i].id === prevProps.movie.id) {
+        isInNewWatchList = true;
+      }
+    }
+    return !(isInOldWatchList ^ isInNewWatchList);
   }
 );
 
