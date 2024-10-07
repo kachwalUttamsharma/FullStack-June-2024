@@ -1,8 +1,22 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Form, Input, Button, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { RegisterUser } from "../api/user";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    console.log(values);
+    try {
+      const response = await RegisterUser(values);
+      if (response?.success) {
+        message.success(response?.message);
+        navigate("/login");
+      }
+    } catch (error) {
+      message.error(error);
+    }
+  };
   return (
     <header className="App-header">
       <main className="main-area mw-500 text-center px-3">
@@ -10,7 +24,7 @@ const Register = () => {
           <h1>Register to BookMyShow</h1>
         </section>
         <section>
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onFinish}>
             <Form.Item
               label="Name"
               htmlFor="name"
@@ -54,7 +68,7 @@ const Register = () => {
               <Button
                 type="primary"
                 block
-                htmlFor="submit"
+                htmlType="submit"
                 style={{ fontSize: "1rem", fontWeight: "600" }}
               >
                 Register
