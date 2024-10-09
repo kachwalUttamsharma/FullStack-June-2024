@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginUser } from "../api/user";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/loaderSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
+      dispatch(showLoading());
       const response = await LoginUser(values);
       if (response?.success) {
         message.success(response?.message);
@@ -15,8 +19,16 @@ const Login = () => {
       }
     } catch (error) {
       message.error(error);
+    } finally {
+      dispatch(hideLoading());
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("tokenForBMS")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
   return (
     <header className="App-header">
       <main className="main-area mw-500 text-center px-3">
