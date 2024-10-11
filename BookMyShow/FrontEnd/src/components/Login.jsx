@@ -16,6 +16,9 @@ const Login = () => {
         message.success(response?.message);
         localStorage.setItem("tokenForBMS", response?.data);
         navigate("/");
+      } else if (response?.message === "Please enter valid password") {
+        // to do
+        message.error(response?.message);
       }
     } catch (error) {
       message.error(error);
