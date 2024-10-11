@@ -3,11 +3,6 @@ import { Tabs } from "antd";
 import MovieList from "./MovieList";
 import TheatreTable from "./TheatreTable";
 
-// Admin -> Movie (CRUD) and Theatre
-// Tabs
-// each Tab -> Movie -> set of information
-// form -> add a movie
-// Table
 function Admin() {
   const tabItems = [
     {

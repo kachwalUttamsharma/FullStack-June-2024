@@ -8,3 +8,21 @@ export const getAllMovies = async () => {
     return error;
   }
 };
+
+export const updateMovie = async (payload) => {
+  try {
+    const response = await axiosInstance.patch("/movies/updateMovie", payload);
+    return response?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deleteMovie = async (payload) => {
+  try {
+    const response = await axiosInstance.post("/movies/deleteMovie", payload);
+    return response?.data;
+  } catch (error) {
+    return error;
+  }
+};
