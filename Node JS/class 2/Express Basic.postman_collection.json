@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "928e02e6-31a2-4079-8d7f-b2f566df9ed6",
+		"name": "Express Basic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30258682"
+	},
+	"item": [
+		{
+			"name": "getUserDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/getUserDetails",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getUserDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addNewUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Surya\",\n    \"email\": \"surya@scaler.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/addNewUser",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addNewUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserInfo",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Surya\",\n    \"email\": \"suryanarayana@scaler.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/updateUserInfo",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"updateUserInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Surya\",\n    \"email\": \"suryanarayana@scaler.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/deleteUser",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
