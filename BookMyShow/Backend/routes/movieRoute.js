@@ -11,6 +11,6 @@ const router = require("express").Router();
 router.post("/addMovie", validateJWTToken, addMovie);
 router.get("/getAllMovies", validateJWTToken, getAllMovies);
 router.patch("/updateMovie", validateJWTToken, updateMovie);
-router.post("/deleteMovie", validateJWTToken, deleteMovie);
+router.delete("/deleteMovie/:movieId", validateJWTToken, deleteMovie);
 
 module.exports = router;
