@@ -2,10 +2,10 @@
 
 ## Class
 
-1. Convert Delete Movie API into Query Param API and handling on Client
-2. Fix Release Date Render Issue on Edit Form
-3. handle expiry jwt token
-4. datetime formatter into moment
+1. Convert Delete Movie API into Query Param API and handling on Client - done
+2. Fix Release Date Render Issue on Edit Form - done
+3. handle expiry jwt token - done
+4. datetime formatter into moment - done
 
 ## Masters
 
