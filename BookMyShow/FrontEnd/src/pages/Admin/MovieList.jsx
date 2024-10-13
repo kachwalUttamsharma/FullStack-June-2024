@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DateTime } from "luxon";
 import { Table, message, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/loaderSlice";
@@ -7,6 +6,7 @@ import { getAllMovies } from "../../api/movie";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import MovieForm from "./MovieForm";
 import DeleteMovieModal from "./DeleteMovieModal";
+import moment from "moment";
 
 const MovieList = () => {
   const [movies, SetMovies] = useState([]);
@@ -70,7 +70,8 @@ const MovieList = () => {
       title: "Release Date",
       dataIndex: "releaseDate",
       render: (text, data) => {
-        return DateTime.fromISO(text).toFormat("dd-MM-yyyy");
+        moment;
+        return moment(data.releaseDate).format("MM-DD-YYYY");
       },
     },
     {
