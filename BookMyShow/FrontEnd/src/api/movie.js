@@ -28,3 +28,12 @@ export const deleteMovie = async (payload) => {
     return error;
   }
 };
+
+export const addMovie = async (values) => {
+  try {
+    const response = await axiosInstance.post("/movies/addMovie", values);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
