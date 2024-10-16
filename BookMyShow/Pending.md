@@ -3,6 +3,7 @@
 ## Class
 
 1. Role specific authorization on backend
+2. Work on image styles on home page
 
 ## Masters
 

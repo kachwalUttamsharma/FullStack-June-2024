@@ -22,6 +22,7 @@ const TheatreForm = ({
       if (formType === "add") {
         response = await addTheatre({ ...values, owner: user._id });
       } else {
+        values.theatreId = selectedTheatre._id;
         response = await updateTheatre(values);
       }
       if (response.success) {
