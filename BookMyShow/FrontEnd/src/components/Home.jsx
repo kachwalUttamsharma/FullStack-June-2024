@@ -88,7 +88,19 @@ const Home = () => {
                     src={movie.poster}
                     alt="Movie Poster"
                     width={200}
-                    style={{ borderRadius: "8px" }}
+                    height={300}
+                    style={{
+                      borderRadius: "8px",
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                      transition: "transform 0.3s",
+                      objectFit: "cover",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
                   />
                   <h3
                     onClick={() => {

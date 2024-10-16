@@ -34,7 +34,6 @@ const ShowModal = ({
 }) => {
   const [shows, setShows] = useState([]);
   const [movies, setMovies] = useState(null);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [view, setView] = useState("table");
   const [selectedShow, setSelectedShow] = useState(null);
   const dispatch = useDispatch();
@@ -143,10 +142,10 @@ const ShowModal = ({
             <Button
               onClick={() => {
                 setView("edit");
-                setSelectedMovie(data.movie);
                 setSelectedShow({
                   ...data,
                   date: moment(data.date).format("YYYY-MM-DD"),
+                  movie: data.movie._id,
                 });
               }}
             >
@@ -319,7 +318,6 @@ const ShowModal = ({
                       id="movie"
                       name="movie"
                       placeholder="Select Movie"
-                      defaultValue={selectedMovie && selectedMovie.movieName}
                       options={movies.map((movie) => ({
                         key: movie._id,
                         value: movie._id,
