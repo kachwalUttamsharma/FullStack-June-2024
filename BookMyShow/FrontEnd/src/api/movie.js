@@ -37,3 +37,12 @@ export const addMovie = async (values) => {
     console.error(error);
   }
 };
+
+export const getMovieById = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/movies/movie/${id}`);
+    return response.data;
+  } catch (err) {
+    return err.response;
+  }
+};

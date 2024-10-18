@@ -2,8 +2,8 @@
 
 ## Class
 
-1. Role specific authorization on backend
-2. Work on image styles on home page
+1. how can we avoid booking same ticket again
+2. user is able to select booked tickets
 
 ## Masters
 
