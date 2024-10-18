@@ -7,6 +7,7 @@ const userRoute = require("./routes/userRoute");
 const movieRoute = require("./routes/movieRoute");
 const theatreRoute = require("./routes/theatreRoute");
 const showRoute = require("./routes/showRoute");
+const bookingRoute = require("./routes/bookingRoute");
 const { validateJWTToken } = require("./middleware/authorizationMiddleware");
 
 connectDB();
@@ -17,6 +18,7 @@ app.use("/bms/users", userRoute);
 app.use("/bms/movies", validateJWTToken, movieRoute);
 app.use("/bms/theatres", validateJWTToken, theatreRoute);
 app.use("/bms/shows", validateJWTToken, showRoute);
+app.use("/bms/bookings", validateJWTToken, bookingRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is running on ${process.env.PORT}`);
