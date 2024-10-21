@@ -19,7 +19,12 @@ const Forget = () => {
         alert("OTP sent to your email");
         navigate("/reset");
       } else {
-        message.error(response.message);
+        if (response.message === "Please use otp sent on mail") {
+          alert("Please use existing otp");
+          navigate("/reset");
+        } else {
+          message.error(response.message);
+        }
       }
     } catch (error) {
       message.error(error.message);

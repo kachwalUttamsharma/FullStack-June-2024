@@ -95,13 +95,12 @@ const forgetPassword = async (req, res) => {
         status: false,
         message: "user not found",
       });
+    } else if (user?.otp != undefined && user.otp < Date.now()) {
+      return res.json({
+        success: false,
+        message: "Please use otp sent on mail",
+      });
     }
-    // else if (user.otp != undefined && user.otp < Date.now()) {
-    //   return res.status(401).json({
-    //     success: false,
-    //     message: "Please use otp sent on mail",
-    //   });
-    // }
     const otp = Math.floor(Math.random() * 10000 + 90000);
     user.otp = otp;
     user.otpExpiry = Date.now() + 10 * 60 * 1000;
