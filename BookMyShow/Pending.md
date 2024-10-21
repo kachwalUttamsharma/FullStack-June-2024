@@ -2,8 +2,8 @@
 
 ## Class
 
-1. how can we avoid booking same ticket again
-2. user is able to select booked tickets
+1. how can we avoid booking same ticket again & 2 people
+2. avoid sending multiple otps on password reset
 
 ## Masters
 
@@ -14,3 +14,4 @@
 5. custom hooks -> extract api call design (design is reusable)
 6. redux state handling for movies and theatre
 7. swagger
+8. Read Transaction on mongodb
