@@ -30,3 +30,15 @@ export const getAllBookings = async () => {
     return err.response;
   }
 };
+
+export const makePaymentAndBookShow = async (payload) => {
+  try {
+    const response = await axiosInstance.post(
+      "/bookings/makePaymentAndBookShow",
+      payload
+    );
+    return response.data;
+  } catch (err) {
+    return err.response;
+  }
+};

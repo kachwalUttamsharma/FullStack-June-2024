@@ -3,7 +3,6 @@
 ## Class
 
 1. how can we avoid booking same ticket again & 2 people
-2. avoid sending multiple otps on password reset
 
 ## Masters
 
