@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Websockets</title>
+    <style>
+      ul {
+        list-style: none;
+      }
+
+      .message-sender {
+        background-color: lightcoral;
+        margin-left: 4rem;
+        padding: 1rem;
+        border-bottom: 2px solid black;
+        border-radius: 2px;
+      }
+
+      .message-receiver {
+        background-color: lightblue;
+        margin-left: 2rem;
+        padding: 1rem;
+        border-bottom: 2px solid black;
+        border-radius: 2px;
+      }
+
+      .messages-list {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat Applications</h1>
+    <section id="individualMessaging">
+      <h2>Send a Message</h2>
+      <input type="text" id="usernameInput" placeholder="your name" />
+      <input type="text" id="messageInput" placeholder="your message" />
+      <button id="sendMessageBtn">Send</button>
+
+      <h2>Messages</h2>
+      <div class="messages-list">
+        <ul id="messages"></ul>
+      </div>
+    </section>
+
+    <section id="groupMessaging">
+      <h2>Group Messaging</h2>
+      <input type="text" id="groupNameInput" placeholder="Group Name" />
+      <button id="createGroupBtn">Create Group</button>
+      <button id="joinGroupBtn">Join Group</button>
+      <button id="leaveGroupBtn">Leave Group</button>
+
+      <input
+        type="text"
+        id="groupMessageInput"
+        placeholder="Message to Group"
+      />
+      <button id="sendToGroupBtn">Send to Group</button>
+
+      <h2>Available Groups</h2>
+      <ul id="groupsList"></ul>
+
+      <h2>Group Members</h2>
+      <ul id="membersList"></ul>
+
+      <h2>Group Chat Messages</h2>
+      <div class="messages-list">
+        <ul id="groupMessages"></ul>
+      </div>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      const sendMessageBtn = document.getElementById("sendMessageBtn");
+      const usernameInput = document.getElementById("usernameInput");
+      const messageInput = document.getElementById("messageInput");
+      const messagesList = document.getElementById("messages");
+
+      sendMessageBtn.addEventListener("click", () => {
+        const messageText = messageInput.value;
+        const username = usernameInput.value;
+
+        const senderDiv = document.createElement("div");
+        senderDiv.setAttribute("class", "message-sender");
+
+        const messageItem = document.createElement("li");
+        messageItem.innerText = username;
+        const messageContent = document.createElement("p");
+        messageContent.innerText = messageText;
+
+        senderDiv.appendChild(messageItem);
+        senderDiv.appendChild(messageContent);
+        messagesList.append(senderDiv);
+
+        socket.emit("send_message", { username, messageText });
+      });
+
+      socket.on("message", (data) => {
+        console.log(data);
+      });
+
+      socket.on("broadcast", (data) => {
+        const receiverDiv = document.createElement("div");
+        receiverDiv.setAttribute("class", "message-receiver");
+
+        const messageItem = document.createElement("li");
+        messageItem.innerText = data.username;
+
+        const messageContent = document.createElement("p");
+        messageContent.innerText = data.messageText;
+
+        receiverDiv.appendChild(messageItem);
+        receiverDiv.appendChild(messageContent);
+        messagesList.appendChild(receiverDiv);
+      });
+
+      // grouping usecases
+
+      const createGroupBtn = document.getElementById("createGroupBtn");
+      const joinGroupBtn = document.getElementById("joinGroupBtn");
+      const leaveGroupBtn = document.getElementById("leaveGroupBtn");
+      const sendToGroupBtn = document.getElementById("sendToGroupBtn");
+
+      const groupNameInput = document.getElementById("groupNameInput");
+      const groupMessageInput = document.getElementById("groupMessageInput");
+      const groupsList = document.getElementById("groupsList");
+      const membersList = document.getElementById("membersList");
+      const groupMessagesList = document.getElementById("groupMessages");
+
+      let activeRoom = null;
+
+      createGroupBtn.addEventListener("click", () => {
+        const groupName = groupNameInput.value;
+        if (groupName) {
+          socket.emit("create_group", groupName);
+        }
+      });
+
+      joinGroupBtn.addEventListener("click", () => {
+        const groupName = groupNameInput.value;
+        if (groupName) {
+          socket.emit("join_group", groupName);
+          activeRoom = groupName;
+        }
+      });
+
+      leaveGroupBtn.addEventListener("click", () => {
+        if (activeRoom) {
+          socket.emit("leave_group", activeRoom);
+          activeRoom = null;
+          membersList.innerHTML = "";
+          groupMessagesList.innerHTML = "";
+        }
+      });
+
+      sendToGroupBtn.addEventListener("click", () => {
+        const groupMessage = groupMessageInput.value;
+        if (groupMessage && activeRoom) {
+          socket.emit("group_message", {
+            roomId: activeRoom,
+            message: groupMessage,
+          });
+          groupMessageInput.value = "";
+        }
+      });
+
+      socket.on("update_groups_list", (groups) => {
+        groupsList.innerHTML = "";
+        groups.forEach((group) => {
+          const groupItem = document.createElement("li");
+          groupItem.innerText = group;
+          groupsList.appendChild(groupItem);
+        });
+      });
+
+      socket.on("update_members_list", (members) => {
+        membersList.innerHTML = "";
+        members.forEach((member) => {
+          const memberItem = document.createElement("li");
+          memberItem.innerText = member;
+          membersList.appendChild(memberItem);
+        });
+      });
+
+      socket.on("receive_group_message", (data) => {
+        const receiverDiv = document.createElement("div");
+        receiverDiv.setAttribute("class", "message-receiver");
+
+        const messageItem = document.createElement("li");
+        messageItem.innerText = data.sender;
+
+        const messageContent = document.createElement("p");
+        messageContent.innerText = data.message;
+
+        receiverDiv.appendChild(messageItem);
+        receiverDiv.appendChild(messageContent);
+
+        groupMessagesList.appendChild(receiverDiv);
+      });
+    </script>
+  </body>
+</html>
