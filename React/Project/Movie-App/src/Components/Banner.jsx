@@ -15,7 +15,7 @@ const Banner = () => {
       )
       .then((response) => {
         console.log(response);
-        const firstMovie = response?.data?.results[0];
+        const firstMovie = response?.data?.results[4];
         const title = firstMovie?.title;
         const poster = firstMovie["backdrop_path"];
         SetBannerState({
